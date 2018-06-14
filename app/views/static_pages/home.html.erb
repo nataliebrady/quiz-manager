@@ -1,0 +1,43 @@
+<% provide(:title, 'Home') %>
+
+<body class="home">
+  
+<div class="second-nav">
+  
+<div class="navbar-container">
+  
+<li style="padding-left:0px;"><%= link_to "About",   about_path %></li>
+<li><%= link_to "Faqs", faqs_path %></li>
+<li><%= link_to "Help", help_path %></li>
+<li><%= link_to "Contact", contact_path %></li>
+  
+</div>
+  
+</div>
+  
+<div class="main-container">
+  
+  <div class="row">
+  
+  <div class="col-sm-6">
+    
+  <h1>Welcome to Quizzer</h1>
+
+  <h3>
+    This is the home page for Quizzer where you can test your knowledge with our online quizzes.
+  </h3>
+
+    <br>
+    
+  <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+    
+ </div>
+    
+ <div class="col-sm-6">
+   
+   
+    </div>
+    
+  </div>
+</div>
+</body>
