@@ -175,7 +175,7 @@ input, textarea, select, .uneditable-input {
   margin-bottom: 15px;
 }
 
-.signup-container {
+.signup-container, .login-container {
   margin-top:50px;
 }
 
@@ -192,8 +192,8 @@ input, textarea, select, .uneditable-input {
   padding:10px;
 }
 
-.signup-container .btn-primary {
-  width:auto;
+.signup-container .btn-primary, .login-container .btn-primary {
+  width:150px;
   padding-left:20px;
   padding-right:20px;
 }
@@ -211,4 +211,15 @@ input, textarea, select, .uneditable-input {
   .form-control {
     color: $state-danger-text;
   }
+}
+
+.login-container form, .login-container p {
+  width:70%;
+  left:50%;
+  transform:translateX(-50%);
+  position:relative;
+}
+
+.login-container p {
+  margin-top:20px;
 }

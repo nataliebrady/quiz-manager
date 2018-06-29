@@ -1,0 +1,41 @@
+<% provide(:title, "Log in") %>
+
+<div class="second-nav">
+  
+<div class="navbar-container">
+  
+<li style="padding-left:0px;"><%= link_to "About",   about_path %></li>
+<li><%= link_to "Faqs", faqs_path %></li>
+<li><%= link_to "Help", help_path %></li>
+<li><%= link_to "Contact", contact_path %></li>
+  
+</div>
+  
+</div>
+
+<div class="background-container">
+
+<div class="background-container-text">
+  
+<h1>Log in</h1>
+  
+</div>
+  
+</div>
+
+<div class="row login-container">
+  <div class="col-md-12">
+    <%= form_for(:session, url: login_path) do |f| %>
+
+      <%= f.label :email %>
+      <%= f.email_field :email, class: 'form-control' %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control' %>
+
+      <%= f.submit "Log in", class: "btn btn-primary" %>
+    <% end %>
+
+    <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+  </div>
+</div>
