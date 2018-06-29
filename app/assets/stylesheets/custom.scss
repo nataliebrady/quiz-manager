@@ -192,7 +192,13 @@ input, textarea, select, .uneditable-input {
   padding:10px;
 }
 
-.signup-container .btn-primary, .login-container .btn-primary {
+.signup-container .btn-primary {
+  width:auto;
+  padding-left:20px;
+  padding-right:20px;
+}
+
+.login-container .btn-primary {
   width:150px;
   padding-left:20px;
   padding-right:20px;
@@ -222,4 +228,25 @@ input, textarea, select, .uneditable-input {
 
 .login-container p {
   margin-top:20px;
+}
+
+.form-alert {
+  width:70%;
+  left:50%;
+  transform:translateX(-50%);
+  position:relative;
+}
+
+.checkbox {
+  margin-top: -10px;
+  margin-bottom: 10px;
+  span {
+    margin-left: 20px;
+    font-weight: normal;
+  }
+}
+
+#session_remember_me {
+  width: auto;
+  margin-left: 0;
 }
