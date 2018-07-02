@@ -4,6 +4,7 @@
 body {
   padding-top: 60px;
   font-family: 'Poppins', sans-serif;
+  background-color: #F5F5F5;
 }
 
 section {
@@ -204,6 +205,12 @@ input, textarea, select, .uneditable-input {
   padding-right:20px;
 }
 
+.mainpage-container form .btn-primary {
+  width:200px;
+  padding-left:20px;
+  padding-right:20px;
+}
+
 #error_explanation {
   color: red;
   ul {
@@ -249,4 +256,28 @@ input, textarea, select, .uneditable-input {
 #session_remember_me {
   width: auto;
   margin-left: 0;
+}
+
+.mainpage-container {
+  width:70%;
+  left:50%;
+  transform:translateX(-50%);
+  position:relative;
+  margin-top:70px;
+  h1 {
+    padding-right:15px;
+    padding-left:15px;
+  }
+}
+
+/* Users index */
+
+.users {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-bottom: 1px solid $gray-lighter;
+  }
 }
