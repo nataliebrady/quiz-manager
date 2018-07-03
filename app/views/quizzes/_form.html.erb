@@ -12,3 +12,22 @@
   <% end %>
 <%= form.submit yield(:button_text), class: "btn btn-primary" %>
 <% end %>
+
+<%= semantic_form_for @quiz do |form| %>
+  <% form.inputs do %>
+     <%= form.label :title %>
+     <%= form.input :title %>
+    <h3>Questions</h3>
+    <div id='questions'>
+      <%= form.semantic_fields_for :questions do |question| %>
+        <%= render 'task_fields', :form => question %>
+      <% end %>
+      <div class='links'>
+        <%= link_to_add_association 'add question', form, :questions %>
+      </div>
+    </div>
+    <% f.buttons do %>
+      <%= f.submit 'Save' %>
+    <% end %>
+  <% end %>
+<% end %>
