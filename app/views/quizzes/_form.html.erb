@@ -3,10 +3,8 @@
     <%= f.label :title, "Quiz title" %>
     <%= f.input :title %>
     <div id='questions'>
-    <% i = 0 %>
       <%= f.semantic_fields_for :questions do |question| %>
-        <%= render 'question_fields', :f => question, :i => i %>
-          <%= i = i + 1 %>
+        <%= render 'question_fields', :f => question %>
       <% end %>
       <div class='links'>
         <%= link_to_add_association 'add question', f, :questions %>
