@@ -265,8 +265,6 @@ input, textarea, select, .uneditable-input {
   position:relative;
   margin-top:70px;
   h1 {
-    padding-right:15px;
-    padding-left:15px;
   }
 }
 
@@ -280,4 +278,51 @@ input, textarea, select, .uneditable-input {
     padding: 10px 0;
     border-bottom: 1px solid $gray-lighter;
   }
+}
+
+/* Quiz form */
+
+.inputs li {
+    list-style:none;
+}
+
+.label {
+    display:none;
+}
+
+.row {
+    margin-left:0px;
+}
+
+.quiz-page ol {
+    padding:0px;
+}
+
+.quiz-page #questions {
+    padding-left:40px;
+}
+
+.quiz-page #answers {
+    padding-left:40px;
+}
+
+.form-answer-title {
+    padding-left:40px;
+}
+
+.form-question-title {
+    padding-left:40px;
+}
+
+.question-container {
+    border:1px solid black;
+}
+
+.remove-question-link {
+    margin-top:20px;
+    display:block;
+}
+
+hr {
+    border-top: 1px solid pink;
 }

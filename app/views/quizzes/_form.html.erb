@@ -1,33 +1,19 @@
-<%= form_with(model: @quiz, local: true) do |form| %>
- <%= form.label :title %>
- <%= form.text_field :title %>
-  <%= form.fields_for :questions do |question| %>
-    <%= question.label :question_title %>
-    <%= question.text_field :question_title %>
-    <%= question.fields_for :answers do |answer| %>
-      <%= answer.label :answer_title %>
-      <%= answer.text_field :answer_title %>
-      <%= answer.check_box :correct_answer %>
-    <% end %>
-  <% end %>
-<%= form.submit yield(:button_text), class: "btn btn-primary" %>
-<% end %>
-
-<%= semantic_form_for @quiz do |form| %>
-  <% form.inputs do %>
-     <%= form.label :title %>
-     <%= form.input :title %>
-    <h3>Questions</h3>
+<%= semantic_form_for @quiz do |f| %>
+  <% f.inputs do %>
+    <%= f.label :title, "Quiz title" %>
+    <%= f.input :title %>
     <div id='questions'>
-      <%= form.semantic_fields_for :questions do |question| %>
-        <%= render 'task_fields', :form => question %>
+    <% i = 0 %>
+      <%= f.semantic_fields_for :questions do |question| %>
+        <%= render 'question_fields', :f => question, :i => i %>
+          <%= i = i + 1 %>
       <% end %>
       <div class='links'>
-        <%= link_to_add_association 'add question', form, :questions %>
+        <%= link_to_add_association 'add question', f, :questions %>
       </div>
     </div>
-    <% f.buttons do %>
-      <%= f.submit 'Save' %>
+    <%= f.actions do %>
+      <%= f.action :submit, :as => :button %>
     <% end %>
   <% end %>
 <% end %>
