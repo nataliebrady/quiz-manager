@@ -22,14 +22,14 @@
   <#% end %>
 </div> -->
 
-<div class='nested-fields'>
+<div class='nested-fields question-box'>
 <%= f.inputs do %>
   <div class="panel panel-default">
     <div class="panel-heading">
 
       <h4 class="panel-title">
         <a data-toggle="collapse" data-parent="#accordion" href=".collapse-1">
-        Question 1 
+  
         <i class="more-less glyphicon glyphicon-plus"></i></a>
       </h4>
     </div>
@@ -47,7 +47,7 @@
               <%= render 'answer_fields', :f => answer %>
             <% end %>
             <div class='links'>
-              <%= link_to_add_association 'add answer', f, :answers %>
+              <%= link_to_add_association 'Add Answer', f, :answers %>
             </div>
           </div>
         <% end %>

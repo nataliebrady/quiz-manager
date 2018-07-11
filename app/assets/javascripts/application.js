@@ -37,8 +37,6 @@ $(document).ready(function() {
  	$('.collapse-'+counter+' .panel-collapse').attr('id', 'collapse-'+counter);
  	$('.collapse-'+counter+' .panel-collapse').removeClass('collapse-1');
  	$(".collapse-"+counter+" .panel-title a").attr("href", "#collapse-"+counter);
- 	$(".collapse-"+counter+" .panel-title a").empty();
-  	$(".collapse-"+counter+" .panel-title a").append('Question '+counter+' <i class="more-less glyphicon glyphicon-plus"></i>');
  }
   });
 
