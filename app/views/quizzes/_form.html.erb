@@ -3,12 +3,14 @@
     <%= f.label :title, "Quiz title" %>
     <%= f.input :title %>
     <div id='questions'>
+      <div class="panel-group" id="accordion">
       <%= f.semantic_fields_for :questions do |question| %>
         <%= render 'question_fields', :f => question %>
       <% end %>
-      <div class='links'>
-        <%= link_to_add_association 'add question', f, :questions %>
+      <div class='links add-question'>
+        <%= link_to_add_association 'Add Question', f, :questions %>
       </div>
+    </div>
     </div>
     <%= f.actions do %>
       <%= f.action :submit, :as => :button %>

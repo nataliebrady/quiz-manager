@@ -1,23 +1,64 @@
-
+<!-- 
 <div class='nested-fields'>
-  <%= f.inputs do %>
+  <#%= f.inputs do %>
     <hr>
     <h3 class="form-question-title">Question</h3>
-    <%= f.input :question_title %>
-<%= semantic_form_for @quiz do |f| %>
-  <% f.inputs do %>
+    <#%= f.input :question_title %>
+<#%= semantic_form_for @quiz do |f| %>
+  <#% f.inputs do %>
     <h3 class="form-answer-title">Answers </h3>
     <div id='answers'>
-      <%= f.semantic_fields_for :answers do |answer| %>
-        <%= render 'answer_fields', :f => answer %>
-      <% end %>
+      <#%= f.semantic_fields_for :answers do |answer| %>
+        <#%= render 'answer_fields', :f => answer %>
+      <#% end %>
       <div class='links'>
-        <%= link_to_add_association 'add answer', f, :answers %>
+        <#%= link_to_add_association 'add answer', f, :answers %>
       </div>
     </div>
-  <% end %>
-<% end %>
+  <#% end %>
+<#% end %> 
+ -->
+<!--     <#%= link_to_remove_association "remove question", f, class: "remove-question-link" %>
+  <#% end %>
+</div> -->
 
-    <%= link_to_remove_association "remove question", f, class: "remove-question-link" %>
-  <% end %>
+<div class='nested-fields'>
+<%= f.inputs do %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href=".collapse-1">
+        Question 1 
+        <i class="more-less glyphicon glyphicon-plus"></i></a>
+      </h4>
+    </div>
+    <div id="collapse-1" class="panel-collapse collapse collapse-1 in">
+      <div class="panel-body">
+
+        <p>The question:</p>
+        <%= f.input :question_title %>
+
+        <%= semantic_form_for @quiz do |f| %>
+          <% f.inputs do %>
+          <h4 class="form-answer-title">Answers </h4>
+          <div id='answers'>
+            <%= f.semantic_fields_for :answers do |answer| %>
+              <%= render 'answer_fields', :f => answer %>
+            <% end %>
+            <div class='links'>
+              <%= link_to_add_association 'add answer', f, :answers %>
+            </div>
+          </div>
+        <% end %>
+        <% end %>
+
+    <%= link_to_remove_association "Remove Question", f, class: "remove-question-link" %>
+        
+      </div>
+    </div>
+  </div>
+<% end %>
 </div>
+
+<br>

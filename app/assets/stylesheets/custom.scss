@@ -298,19 +298,6 @@ input, textarea, select, .uneditable-input {
     padding:0px;
 }
 
-.quiz-page #questions {
-    padding-left:40px;
-}
-
-.quiz-page #answers {
-    padding-left:40px;
-}
-
-.form-answer-title {
-    padding-left:40px;
-}
-
-
 .question-container {
     border:1px solid black;
 }
@@ -322,4 +309,46 @@ input, textarea, select, .uneditable-input {
 
 hr {
     border-top: 1px solid pink;
+}
+
+.panel-default > .panel-heading {
+  background-color:#eaeaea;
+}
+
+.more-less {
+  float:right;
+  color:#212121;
+}
+
+.add-question a {
+  display:block;
+  padding-top:10px;
+  padding-bottom:10px;
+  text-align:center;
+  background-color:#eaeaea;
+  color:#212121;
+  border: 1px solid #ddd;
+}
+
+.add-question a:hover, .add-question a:focus, .add-question a:active {
+  text-decoration:none;
+  background-color:#ddd;
+}
+
+.panel-title {
+  font-size:20px;
+}
+
+h4 {
+  font-size:20px;
+}
+
+.remove-question-link {
+  float:right;
+  padding-top:5px;
+  padding-bottom:5px;
+} 
+
+.panel-body {
+  padding-bottom:0px;
 }
