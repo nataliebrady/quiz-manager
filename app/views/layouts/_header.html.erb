@@ -10,7 +10,19 @@
             <li><%= link_to "Home",   root_path %></li>
             <% if logged_in? %>
             <li><%= link_to "Users", users_path %></li>
-            <li><%= link_to "Quizzes", nil %></li>
+            <% if current_user.admin? %>
+            <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Quizzes <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "New quiz", new_quiz_path %></li>
+              <li><%= link_to "All quizzes", quizzes_path %></li>
+            </ul>
+          </li>
+          <% else %>
+          <li><%= link_to "Quizzes", quizzes_path %></li>
+          <% end %>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               Account <b class="caret"></b>

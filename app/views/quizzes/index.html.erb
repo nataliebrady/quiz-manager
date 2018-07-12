@@ -1,0 +1,22 @@
+<% provide(:title, 'All quizzes') %>
+
+<div class="row mainpage-container">
+ 
+<h1>All quizzes</h1>
+
+<div class="col-md-12">
+  
+<%= will_paginate %>
+  
+<ul class="users">
+  <% @quizzes.each do |quiz| %>
+    <li>
+      <%= render @quizzes %>
+    </li>
+  <% end %>
+</ul>
+
+<%= will_paginate %>
+  
+</div>
+</div>

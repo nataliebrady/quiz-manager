@@ -1,0 +1,8 @@
+<li>
+  <%= link_to quiz.title, quiz %>
+  <% if current_user.admin? && !current_user?(@user) %>
+    | <%= link_to "Delete", quiz, method: :delete,
+                                  data: { confirm: "You sure?" } %> |
+      <%= link_to "Edit", edit_quiz_path(quiz) %>
+  <% end %>
+</li>
