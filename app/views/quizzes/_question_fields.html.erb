@@ -23,7 +23,6 @@
 </div> -->
 
 <div class='nested-fields question-box'>
-<%= f.inputs do %>
   <div class="panel panel-default">
     <div class="panel-heading">
 
@@ -37,28 +36,21 @@
       <div class="panel-body">
 
         <p>The question:</p>
-        <%= f.input :question_title %>
+        <%= f.text_field :question_title %>
 
-        <%= semantic_form_for @quiz do |f| %>
-          <% f.inputs do %>
           <h4 class="form-answer-title">Answers </h4>
           <div id='answers'>
-            <%= f.semantic_fields_for :answers do |answer| %>
+            <%= f.fields_for :answers do |answer| %>
               <%= render 'answer_fields', :f => answer %>
             <% end %>
             <div class='links'>
               <%= link_to_add_association 'Add Answer', f, :answers %>
             </div>
           </div>
-        <% end %>
-        <% end %>
-
     <%= link_to_remove_association "Remove Question", f, class: "remove-question-link" %>
         
       </div>
     </div>
   </div>
-<% end %>
-</div>
 
-<br>
+</div>

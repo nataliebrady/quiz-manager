@@ -1,19 +1,18 @@
-<%= semantic_form_for(@quiz, url: new_quiz_path) do |f| %>
-  <% f.inputs do %>
-    <%= f.label :title, "Quiz title" %>
-    <%= f.input :title %>
+
+<%= form_for(@quiz) do |f| %>
+  <%= render 'shared/quiz_error_messages', object: @quiz %>
+    <%= f.label "Quiz title" %>
+    <%= f.text_area :title %>
     <div id='questions'>
       <div class="panel-group" id="accordion">
-      <%= f.semantic_fields_for :questions do |question| %>
+      <%= f.fields_for :questions do |question| %>
         <%= render 'question_fields', :f => question %>
       <% end %>
       <div class='links add-question'>
         <%= link_to_add_association 'Add Question', f, :questions %>
+              <%= f.submit %>
       </div>
     </div>
     </div>
-    <%= f.actions do %>
-      <%= f.action :submit, :as => :button %>
-    <% end %>
+
   <% end %>
-<% end %>

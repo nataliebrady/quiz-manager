@@ -1,4 +1,4 @@
 class Answer < ApplicationRecord
   belongs_to :question
-  belongs_to :quiz
+  validates :answer_title, presence: true, length: { maximum: 250 }
 end

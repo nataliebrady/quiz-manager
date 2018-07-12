@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   get 'quizzes/new'
-
   get 'users/new'
 
   root 'static_pages#home'

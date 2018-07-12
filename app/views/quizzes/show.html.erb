@@ -3,6 +3,12 @@
   <div class="col-md-12">
       <h1>
         <%= @quiz.title %>
+        <% @quiz.questions.each do |question| %>
+        	<%= question.question_title %>
+        	<% question.answers.each do |answer| %>
+        		<%= answer.answer_title %>
+        	<% end %>
+        <% end %>
       </h1>
   </div>
 </div>
