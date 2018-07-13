@@ -4,9 +4,9 @@
       <h1>
         <%= @quiz.title %>
         <% @quiz.questions.each do |question| %>
-        	<%= question.question_title %>
+        	<h4><%= question.question_title %></h4>
         	<% question.answers.each do |answer| %>
-        		<%= answer.answer_title %>
+        		<%= answer.select :answer_title %>
         	<% end %>
         <% end %>
       </h1>

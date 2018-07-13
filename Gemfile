@@ -15,6 +15,7 @@ gem 'jbuilder',     '2.7.0'
 gem 'bootstrap-sass'
 gem "cocoon"
 gem 'formtastic', '~> 3.0'
+gem 'pry'
 
 group :development, :test do
   gem 'sqlite3', '1.3.13'

@@ -39,6 +39,7 @@
         <%= f.text_field :question_title %>
 
           <h4 class="form-answer-title">Answers </h4>
+
           <div id='answers'>
             <%= f.fields_for :answers do |answer| %>
               <%= render 'answer_fields', :f => answer %>
