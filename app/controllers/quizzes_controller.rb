@@ -11,6 +11,8 @@ class QuizzesController < ApplicationController
   
   def show
     @quiz = Quiz.find(params[:id])
+    @questions = Question.all
+    @question = Question.find(params[:id])
   end
 
   def create 
@@ -50,4 +52,5 @@ class QuizzesController < ApplicationController
   def show_params
     params.require(:quiz).permit(:title, questions_attributes: [:id, :question_title, :quiz_id, :done, :_destroy, answers_attributes: [:id, :answer_title, :question_id, :quiz_id, :correct_answer]])
   end
+
 end
