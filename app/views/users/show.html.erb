@@ -4,6 +4,11 @@
       <h1>
         <%= gravatar_for @user %>
         <%= @user.name %>
+
+        <br><br>
+
+        <%= pluralize(current_user.answered_questions.count, "Answered Questions") %>
+        <%= current_user.answered_questions.first %>
       </h1>
   </div>
 </div>
