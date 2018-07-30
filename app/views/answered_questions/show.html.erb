@@ -2,7 +2,12 @@
 <div class="row mainpage-container">
   <div class="col-md-12">
       <h1>
-        <% @answered_question %>
+        <% @quiz.questions.each do |question| %>
+        	<h4><%= question.question_title %></h4>
+        	<% question.answers.each do |answer| %>
+            <%= answer.answer_title %>
+        	<% end %>
+        <% end %>
       </h1>
   </div>
 </div>

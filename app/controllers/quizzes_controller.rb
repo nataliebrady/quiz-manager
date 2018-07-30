@@ -1,4 +1,6 @@
 class QuizzesController < ApplicationController
+
+  before_action :user_completed_quiz, only: [:show]
   
   def index
     @quizzes = Quiz.paginate(page: params[:page])   
@@ -12,7 +14,6 @@ class QuizzesController < ApplicationController
   def show
     @quiz = Quiz.find(params[:id])
     @questions = Question.all
-    @question = Question.find(params[:id])
   end
 
   def create 
@@ -46,8 +47,18 @@ class QuizzesController < ApplicationController
     flash[:success] = "Quiz deleted"
     redirect_to quizzes_url
   end
+
+  def results 
+    @quiz = Quiz.find(params[:id])
+  end
   
   private
+
+  def user_completed_quiz 
+    if(current_user.answered_questions.pluck(:quiz_id).uniq.include?(params[:id].to_i)) 
+      redirect_to quizzes_path
+    end
+  end
   
   def show_params
     params.require(:quiz).permit(:title, questions_attributes: [:id, :question_title, :quiz_id, :done, :_destroy, answers_attributes: [:id, :answer_title, :question_id, :quiz_id, :correct_answer]])

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180724143446) do
+ActiveRecord::Schema.define(version: 20180730120554) do
 
   create_table "answered_questions", force: :cascade do |t|
     t.integer "user_id"
@@ -18,8 +18,10 @@ ActiveRecord::Schema.define(version: 20180724143446) do
     t.integer "answer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "quiz_id"
     t.index ["answer_id"], name: "index_answered_questions_on_answer_id"
     t.index ["question_id"], name: "index_answered_questions_on_question_id"
+    t.index ["quiz_id"], name: "index_answered_questions_on_quiz_id"
     t.index ["user_id"], name: "index_answered_questions_on_user_id"
   end
 
@@ -46,6 +48,19 @@ ActiveRecord::Schema.define(version: 20180724143446) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "user_questions", force: :cascade do |t|
+    t.integer "quiz_id"
+    t.integer "user_id"
+    t.integer "question_id"
+    t.integer "answer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["answer_id"], name: "index_user_questions_on_answer_id"
+    t.index ["question_id"], name: "index_user_questions_on_question_id"
+    t.index ["quiz_id"], name: "index_user_questions_on_quiz_id"
+    t.index ["user_id"], name: "index_user_questions_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

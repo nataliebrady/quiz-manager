@@ -13,19 +13,18 @@
   </div>
 </div>
 
-<%= form_for(:answered_questions, url: answered_questions_path) do |f| %>
-
-  <%= hidden_field_tag :title, @quiz.title %>
+<%= form_for(:answered_question, url: answered_questions_path) do |f| %>
 
   <% @quiz.questions.each do |question| %>
 
-    <%= hidden_field_tag :question, question.question_title %>
+    <%= f.hidden_field :question_id, :value => question.id %>
+    <%= f.hidden_field :quiz_id, :value => @quiz.id %>
 
     <!-- question title -->
     <h3><%= f.label question.question_title %></h3>
 
 
-      <%= f.collection_select(:answers,  question.answers, :id, :answer_title, {:prompt   => "Select an Answer"}) %>
+      <%= f.collection_select(:answer_id, question.answers, :id, :answer_title, {:prompt   => "Select an Answer"}) %>
 
 
   <% end %>
