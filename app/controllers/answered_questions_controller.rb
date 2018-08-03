@@ -32,7 +32,7 @@ class AnsweredQuestionsController < ApplicationController
   private
   
   def answered_params
-    params.require(:answered_question).permit(:question_id, :answer_id, :user_id, :quiz_id, :id, :utf8, :commit, :authenticity_token, :answered_questions)
+    params.require(:answered_question).permit(:question_id, :answer_id, :user_id, :quiz_id, :id, :utf8, :commit, :authenticity_token, :_destroy, :answered_questions)
   end
 
 end
