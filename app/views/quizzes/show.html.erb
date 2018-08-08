@@ -2,36 +2,31 @@
 <div class="row mainpage-container">
   <div class="col-md-12">
       <h1>
-        <%= @quiz.title %>
-        <% @quiz.questions.each do |question| %>
-        	<h4><%= question.question_title %></h4>
-        	<% question.answers.each do |answer| %>
-            <%= answer.answer_title %>
-        	<% end %>
-        <% end %>
-      </h1>
-  </div>
-</div>
 
-<%= form_for(:answered_question, url: answered_questions_path) do |f| %>
+
+<%= form_tag(answered_questions_path, method: "POST") do %>
+
+  <%= @quiz.title %>
+
+  <%= hidden_field_tag :id, @quiz.id %>
 
   <% @quiz.questions.each do |question| %>
 
-    <%= f.hidden_field :question_id, :value => question.id %>
-    <%= f.hidden_field :quiz_id, :value => @quiz.id %>
+    <%= fields_for 'answered_questions[]', question do |answer_ques| %>
 
-    <!-- question title -->
-    <h3><%= f.label question.question_title %></h3>
+      <h4><%= question.question_title %></h4>
 
-
-      <%= f.collection_select(:answer_id, question.answers, :id, :answer_title, {:prompt   => "Select an Answer"}) %>
-
-
+      <%= answer_ques.hidden_field :question_id, :value => question.id %>
+      <%= answer_ques.hidden_field :quiz_id, :value => @quiz.id %>
+      <%= answer_ques.select(:answer_ids, options_for_select(question.answers.map{|q| [q.answer_title, q.id]})) %>
+    <% end %>
   <% end %>
 
-  <!-- submit -->
-  <p>
-    <%= f.submit %>
-  </p>
+  <%= submit_tag %>
 
 <% end %> 
+
+
+      </h1>
+  </div>
+</div>

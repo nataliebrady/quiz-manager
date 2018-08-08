@@ -14,11 +14,17 @@ class QuizzesController < ApplicationController
   def show
     @quiz = Quiz.find(params[:id])
     @questions = Question.all
+    @answered_questions = current_user.answered_questions.build
+
+    @empty_answered_questions = []
+
+    Question.all.each do 
+      @empty_answered_questions << AnsweredQuestion.new
+    end
+
   end
 
   def create 
-
-
     @quiz = Quiz.new(show_params)
     if @quiz.save
       flash[:success] = "You have created a new quiz!"
@@ -63,5 +69,4 @@ class QuizzesController < ApplicationController
   def show_params
     params.require(:quiz).permit(:title, questions_attributes: [:id, :question_title, :quiz_id, :done, :_destroy, answers_attributes: [:id, :answer_title, :question_id, :quiz_id, :correct_answer, :_destroy]])
   end
-
 end

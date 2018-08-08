@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-  has_many :answered_questions, dependent: :destroy
+  has_many :answered_questions
+  accepts_nested_attributes_for :answered_questions
   attr_accessor :remember_token
   before_save { email.downcase! }
   validates :name,  presence: true, length: { maximum: 50 }

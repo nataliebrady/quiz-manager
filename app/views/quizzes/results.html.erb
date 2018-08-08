@@ -7,6 +7,7 @@
         	<h4><%= question.question_title %></h4>
         	<% @answersForQuiz = AnsweredQuestion.where(quiz_id: @quiz.id, question_id: question.id, user_id: current_user.id).first %>
         	<% @correctAnswer = question.answers.where(correct_answer: true).first %>
+
         	<% question.answers.each do |answer| %>
         	<% if(@correctAnswer.id == answer.id && @correctAnswer.id == @answersForQuiz.answer_id) %>
         	<div style="color:green;">

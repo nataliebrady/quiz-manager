@@ -3,6 +3,9 @@ class Question < ApplicationRecord
   has_many :answered_questions, dependent: :destroy
   has_many :answers, dependent: :destroy
   accepts_nested_attributes_for :answers, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :answered_questions
+  has_many :users, through: :answered_questions
+
   validates :question_title, presence: true, length: { maximum: 250 }
   validates :answers, presence: true, length: { maximum: 250}
   validates_associated :answers
