@@ -9,12 +9,23 @@ class AnsweredQuestionsController < ApplicationController
   end
 
   def create
-    @answered_questions = current_user.answered_questions.create(answered_params)
+    # @answered_questions = current_user.answered_questions.create(answered_params)
+    # if @answered_questions.save
+    #   flash[:success] = "You have completed the quiz!"
+    #   redirect_to results_quiz_path(params[:answered_question][:quiz_id])
+    # else 
+    #   render ''
+    # end
+
+    params["answered_questions"].each do |key, value|
+      @answered_questions = AnsweredQuestion.create(answered_params(value))
+    end
+
     if @answered_questions.save
       flash[:success] = "You have completed the quiz!"
-      redirect_to results_quiz_path(params[:answered_question][:quiz_id])
+      redirect_to results_quiz_path(params[:id])
     else 
-      render ''
+      render '' 
     end
   end
 
@@ -31,8 +42,8 @@ class AnsweredQuestionsController < ApplicationController
   
   private
   
-  def answered_params
-    params.require(:answered_question).permit(:question_id, :answer_id, :user_id, :quiz_id, :id, :utf8, :commit, :authenticity_token, :_destroy, :answered_questions)
+  def answered_params(my_params)
+    my_params.permit(:question_id, :quiz_id, :user_id, :answer_ids)
   end
 
 end

@@ -14,6 +14,12 @@ class QuizzesController < ApplicationController
   def show
     @quiz = Quiz.find(params[:id])
     @questions = Question.all
+
+    @empty_answered_questions = []
+
+    @quiz.questions.each do 
+      @empty_answered_questions << AnsweredQuestion.new
+    end
   end
 
   def create 
