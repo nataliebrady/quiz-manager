@@ -9,6 +9,9 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @user_quizzes = current_user.answered_questions.pluck(:quiz_id).uniq
+    @all_quizzes = Quiz.where(id: @user_quizzes)
+    @quiz = Quiz.where(params[:id])
   end
   
   def new

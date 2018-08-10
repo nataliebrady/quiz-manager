@@ -3,23 +3,44 @@
 <div class="row mainpage-container">
   <div class="col-md-12">
         <h1><%= @quiz.title %></h1>
+
         <% @quiz.questions.each do |question| %>
+            <br>
         	<h4><%= question.question_title %></h4>
+
         	<% @answersForQuiz = AnsweredQuestion.where(quiz_id: @quiz.id, question_id: question.id, user_id: current_user.id).first %>
         	<% @correctAnswer = question.answers.where(correct_answer: true).first %>
+
+
         	<% question.answers.each do |answer| %>
+
+            <!-- looping through answers and checking if answer is wrong or right -->
+
+            <!-- first check that the correct answer is the same as one of the answers for the question and then check the correct answer is equal to the answer that the user chose --> 
+
         	<% if(@correctAnswer.id == answer.id && @correctAnswer.id == @answersForQuiz.answer_id) %>
         	<div style="color:green;">
-        		<%= answer.answer_title %>
+        	<%= answer.answer_title %><br>
         	</div>
-        	<% else %>
-        	<div>
+
+        	<% elsif(@answersForQuiz.answer_id == answer.id && answer.correct_answer == false) %>
+
+            <div style="color:red;">
+                
             <%= answer.answer_title %><br>
 
+            </div>
 
-        	</div>
-        	<% end %>
-        	<% end %>
+            <% elsif(@correctAnswer.id == answer.id) %>
+
+            <%= answer.answer_title %> - this is the correct answer<br>
+
+            <% else %>
+
+            <%= answer.answer_title %><br>
+
+            <% end %>
+            <% end %>
         <% end %>
   </div>
 </div>
