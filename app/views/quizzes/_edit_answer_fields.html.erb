@@ -1,0 +1,24 @@
+<div class='nested-fields'>
+<div class="row">
+	<% if current_user.super_admin? %>
+	<div class="col-md-1">
+	<%= link_to_remove_association "x", f, class: "remove-answer-link" %>
+	</div>
+	<% end %>
+	<div class="col-md-6">
+	<% if current_user.super_admin? %>
+    <%= f.text_field :answer_title %>
+    <% elsif current_user.admin? %>
+    <%= f.text_field :answer_title, :disabled => true %><br><br>
+    <% else %>
+    <% end %>
+	</div>
+	<div class="col-md-3">
+
+	<% if current_user.super_admin? %>
+    <%= f.select :correct_answer, options_for_select([ ['No', false], ['Yes', true]]) %>
+	<% end %>
+
+	</div>
+</div>
+</div>

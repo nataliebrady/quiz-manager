@@ -1,19 +1,25 @@
 
-
-
 <%= form_for(@quiz) do |f| %>
   <%= render 'shared/quiz_error_messages', object: @quiz %>
     <%= f.label "Quiz title" %>
+    <% if current_user.super_admin? %>
     <%= f.text_area :title %>
+    <% else %>
+    <%= f.text_area :title, :disabled => true %>
+    <% end %>
     <div id='questions'>
       <div class="panel-group" id="accordion">
       <%= f.fields_for :questions do |question| %>
-        <%= render 'question_fields', :f => question %>
+        <%= render 'edit_question_fields', :f => question %>
       <% end %>
+
+    <% if current_user.super_admin? %>
       <div class='links add-question'>
         <%= link_to_add_association 'Add Question', f, :questions %>
               <%= f.submit :submit, class: "btn-submit" %>
       </div>
+    <% end %>
+
     </div>
     </div>
 

@@ -1,0 +1,70 @@
+<!-- 
+<div class='nested-fields'>
+  <#%= f.inputs do %>
+    <hr>
+    <h3 class="form-question-title">Question</h3>
+    <#%= f.input :question_title %>
+<#%= semantic_form_for @quiz do |f| %>
+  <#% f.inputs do %>
+    <h3 class="form-answer-title">Answers </h3>
+    <div id='answers'>
+      <#%= f.semantic_fields_for :answers do |answer| %>
+        <#%= render 'answer_fields', :f => answer %>
+      <#% end %>
+      <div class='links'>
+        <#%= link_to_add_association 'add answer', f, :answers %>
+      </div>
+    </div>
+  <#% end %>
+<#% end %> 
+ -->
+<!--     <#%= link_to_remove_association "remove question", f, class: "remove-question-link" %>
+  <#% end %>
+</div> -->
+
+<div class='nested-fields question-box'>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href=".collapse-1">
+  
+        <i class="more-less glyphicon glyphicon-plus"></i></a>
+      </h4>
+    </div>
+    <div id="collapse-1" class="panel-collapse collapse collapse-1 in">
+      <div class="panel-body">
+
+        <p>The question:</p>
+
+        <% if current_user.super_admin? %>
+        <%= f.text_field :question_title %>
+        <% else %>
+        <%= f.text_field :question_title, :disabled => true %>
+        <% end %>
+
+        <% if current_user.super_admin? && current_user.admin? %>
+          <h4 class="form-answer-title">Answers </h4>
+        <% else %>
+        <% end %>
+
+          <div id='answers'>
+            <%= f.fields_for :answers do |answer| %>
+              <%= render 'edit_answer_fields', :f => answer %>
+            <% end %>
+
+            <% if current_user.super_admin? %>
+            <div class='links'>
+              <%= link_to_add_association 'Add Answer', f, :answers %>
+            </div>
+            <% end %>
+          </div>
+
+    <% if current_user.super_admin? %>
+    <%= link_to_remove_association "Remove Question", f, class: "remove-question-link" %>
+    <% end %>
+      </div>
+    </div>
+  </div>
+
+</div>

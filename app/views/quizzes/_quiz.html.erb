@@ -4,12 +4,11 @@
  <li>
 
   <%= link_to quiz.title, quiz %>
-  <% if current_user.admin? && !current_user?(@user) %>
+  <% if current_user.super_admin? %>
     | <%= link_to "Delete", quiz, method: :delete,
-                                  data: { confirm: "You sure?" } %> |
+                                  data: { confirm: "You sure?" } %>   <% end %>|
       <%= link_to "Edit", edit_quiz_path(quiz) %>
 
-  <% end %>
 
  </li>
 
@@ -18,13 +17,11 @@
 <li>
 
   <%= quiz.title %> - COMPLETED
-
-  <% if current_user.admin? && !current_user?(@user) %>
+  <% if current_user.super_admin? %>
     | <%= link_to "Delete", quiz, method: :delete,
-                                  data: { confirm: "You sure?" } %> |
+                                  data: { confirm: "You sure?" } %>   <% end %>|
       <%= link_to "Edit", edit_quiz_path(quiz) %>
 
-  <% end %>
 
 </li>
 
